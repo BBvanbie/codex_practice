@@ -1,0 +1,329 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #f6f7fb;
+  --surface: #ffffff;
+  --surface-2: #fbfbfd;
+  --text: #0b0f1a;
+  --text-2: #5b6475;
+  --border: rgba(15, 23, 42, 0.08);
+  --accent: #2f6bff;
+  --accent-2: rgba(47, 107, 255, 0.12);
+  --danger: #ff3b30;
+  --danger-2: rgba(255, 59, 48, 0.12);
+  --success: #22c55e;
+  --warning: #f97316;
+  --warning-2: rgba(249, 115, 22, 0.14);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b0f1a;
+    --surface: #101828;
+    --surface-2: #0f172a;
+    --text: #e6eaf2;
+    --text-2: #a7b0c0;
+    --border: rgba(148, 163, 184, 0.14);
+    --accent: #7aa2ff;
+    --accent-2: rgba(122, 162, 255, 0.16);
+    --danger: #ff6b61;
+    --danger-2: rgba(255, 107, 97, 0.18);
+    --success: #34d399;
+    --warning: #fb923c;
+    --warning-2: rgba(251, 146, 60, 0.18);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.app-shell {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 520px;
+  min-height: 100vh;
+  padding: 16px;
+}
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.top-bar h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.icon-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border: 0;
+  background: var(--accent);
+  color: white;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.section {
+  margin-bottom: 24px;
+}
+
+.section-done {
+  opacity: 0.92;
+}
+
+.section-header {
+  margin-bottom: 10px;
+}
+
+.section-title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-2);
+}
+
+.section-title-primary {
+  color: var(--text);
+}
+
+.section-note {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: var(--text-2);
+}
+
+.empty {
+  margin: 0;
+  color: var(--text-2);
+  font-size: 13px;
+  padding: 12px 0;
+}
+
+.row-wrap {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.row-actions {
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+.row-actions span {
+  width: 88px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.action-complete {
+  background: var(--success);
+}
+
+.action-delete {
+  background: var(--danger);
+}
+
+.todo-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface);
+  padding: 14px 16px;
+  touch-action: pan-y;
+  transition: transform 180ms ease-out, background 180ms ease-out;
+}
+
+.todo-main {
+  min-width: 0;
+}
+
+.todo-title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.todo-meta {
+  margin: 6px 0 0;
+  font-size: 12px;
+  color: var(--text-2);
+  font-variant-numeric: tabular-nums;
+}
+
+.badge {
+  border-radius: 999px;
+  padding: 5px 8px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.badge-overdue {
+  background: var(--danger-2);
+  color: var(--danger);
+}
+
+.badge-today {
+  background: var(--warning-2);
+  color: var(--warning);
+}
+
+.badge-inDays {
+  background: var(--accent-2);
+  color: var(--accent);
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.28);
+  display: grid;
+  place-items: end center;
+  padding: 16px;
+  z-index: 20;
+}
+
+.sheet {
+  width: 100%;
+  max-width: 520px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  padding: 14px;
+}
+
+.sheet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.sheet-header h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13px;
+}
+
+.form input,
+.form textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--text);
+  padding: 10px;
+}
+
+.form-actions,
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.primary-button,
+.danger-button,
+.text-button {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 14px;
+  cursor: pointer;
+  background: transparent;
+  color: var(--text);
+}
+
+.primary-button {
+  background: var(--accent);
+  color: white;
+  border-color: transparent;
+}
+
+.danger-button {
+  background: var(--danger);
+  color: white;
+  border-color: transparent;
+}
+
+.primary-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.dialog {
+  width: 100%;
+  max-width: 360px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  padding: 16px;
+}
+
+.dialog h3 {
+  margin: 0 0 6px;
+  font-size: 16px;
+}
+
+.dialog p {
+  margin: 0;
+  color: var(--text-2);
+  font-size: 13px;
+}
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  z-index: 30;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 14px;
+}
